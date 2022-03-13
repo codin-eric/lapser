@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "lapser"
+version = "0.1.0"
+description = "generates a timelaps out of a list of images"
+authors = ["CodinEric"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+ffmpeg-python = "^0.2.0"
+python-decouple = "^3.6"
+Pillow = "^9.0.1"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
