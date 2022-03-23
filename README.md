@@ -4,6 +4,7 @@ Laura needed a timelaps generator thingy so I made one.
 ```
 Converts a list of images into a video, you can also add the timestamp of each picture.
 
+![img](output.gif)
 
 ## Usage
 This is the first mvp so things are going to break.<br>
@@ -47,10 +48,10 @@ python lapser/main.py
 - [x] --delta-timestamp: fix timestamps (camera time is wrong) ex: --delta-timestamp -10
 - [x] --timestamp: add timestamp to the video
 - [ ] Add click
-- [ ] Add custom font?
+- [X] Add custom font?
 - [ ] --timestamp-pos: define position of the timestamp
 - [ ] --sound-path add sound
 - [ ] --fade: adds fade in/fade out
 - [ ] Create lapser class
-- [ ] Create a dockerfile so Laura can use it "out of the box"
+- [X] Create a dockerfile so Laura can use it "out of the box"
 
