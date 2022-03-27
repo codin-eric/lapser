@@ -18,7 +18,7 @@ docker build -t lapser .
 
 then run a container with
 ```
-docker run -v (your_input_images_folder):/input -v (your_desired_output_folder):/output lapser python src/lapser/main.py
+docker run -v (your_input_images_folder):/input -v (your_desired_output_folder):/output lapser python lapser/main.py
 ```
 You can set the following env vars to the container
 ```
