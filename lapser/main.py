@@ -1,6 +1,7 @@
 from PIL import Image, ImageFont, ImageDraw
 from PIL.ExifTags import TAGS
 import ffmpeg
+import logging
 from pathlib import Path
 from datetime import datetime, timedelta
 
@@ -8,7 +9,6 @@ from cfg import (
     IN_PIC_DIR,
     DEFAULT_OUT_PIC_DIR,
     DEFAULT_PIC_LST_TXT,
-    FONT_NAME,
     IN_PIC_EXT,
     FRAMERATE,
     PIX_FMT_IN,
@@ -18,11 +18,11 @@ from cfg import (
     DELTA_SECONDS,
     TEXT_SIZE,
     IMAGE_SIZE,
+    FONT_PATH
 )
 
 
-ROOT_DIR = Path(__file__).resolve().parent
-FONT_PATH = ROOT_DIR / FONT_NAME
+log = logging.getLogger()
 
 
 def extract_metadata(image):
@@ -33,7 +33,7 @@ def extract_metadata(image):
         # get the tag name, instead of human unreadable tag id
         tag = TAGS.get(tag_id, tag_id)
         data = exifdata.get(tag_id)
-        # decode bytes 
+        # decode bytes
         if isinstance(data, bytes):
             data = data.decode()
         res_dict[tag.lower()] = data
@@ -52,6 +52,7 @@ def transform():
     pic_lst = [x for x in p.glob(f'**/*.{IN_PIC_EXT}')]
     pic_lst.sort()
     out_lst = list()
+    log.info(f'processing {len(pic_lst)} images')
     for idx, pic in enumerate(pic_lst):
         image = Image.open(pic)
         meta_dict = extract_metadata(image)
@@ -73,6 +74,7 @@ def transform():
         out_lst.append(str(out_name.resolve()))
 
         # Generate out file
+        log.info(f'Generate out file {DEFAULT_PIC_LST_TXT}')
         str_i = ''
         for line in out_lst:
             str_i += f"file '{line}'\n"
