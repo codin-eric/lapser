@@ -9,7 +9,6 @@ from cfg import (
     IN_PIC_DIR,
     DEFAULT_OUT_PIC_DIR,
     DEFAULT_PIC_LST_TXT,
-    FONT_NAME,
     IN_PIC_EXT,
     FRAMERATE,
     PIX_FMT_IN,
@@ -19,12 +18,11 @@ from cfg import (
     DELTA_SECONDS,
     TEXT_SIZE,
     IMAGE_SIZE,
+    FONT_PATH
 )
 
 
 log = logging.getLogger()
-ROOT_DIR = Path(__file__).resolve().parent
-FONT_PATH = ROOT_DIR / FONT_NAME
 
 
 def extract_metadata(image):
